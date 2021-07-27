@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+
+
+<div class="main-container">
+
+  <div style="display: block; padding: 0px !important;">
+    <canvas baseChart width="9" height="7"
+      [datasets]="radarChartData"
+      [options]="radarChartOptions"
+      [labels]="radarChartLabels"
+      [chartType]="radarChartType" 
+      [legend]="false"
+      [colors]="radarChartColor">
+    </canvas>
+  </div>
+  <div class="stat-container">
+    <form>
+      <div class="mb-3" *ngFor="let statName of statNames">
+        <table class="stat-table">
+          <tr>
+            <td style="width: 40px;"> 
+              <label for="{{statName | lowercase}}" class="form-label">{{statName}}</label>
+            </td>
+            <td>
+              <input type="text" [disabled]="true" style="width: 150px; background-color: white; border-radius: 30px 0px 0px 30px;">
+              <input type="text" class="form-control stat" id="{{statName | lowercase}}"> &nbsp;&nbsp;<button [disabled]="true" class="stat-btn">-</button>&nbsp;&nbsp;<button class="stat-btn">+</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <span style="font-size: 16px;">Attr Points: </span> 
+    </form>
+  </div>
+</div>
+
+<div class="main-container sub">
+  <table cellspacing="20" style="width: 100%; font-size: 20px;">
+    <tr><td><table style="width: 100%; margin-right: 20px;">
+          <tr>
+            <td>HP</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>Atk</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>M.Atk</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>Hit</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>Critical</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>ASPD</td>
+            <td class="substats-value">0%</td>
+          </tr>
+          <tr>
+            <td>HP Regen</td>
+            <td class="substats-value">0</td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table style="width: 100%;">
+          <tr>
+            <td>SP</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>Def</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>M.Def</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>Flee</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>Crit.Res.</td>
+            <td class="substats-value">0</td>
+          </tr>
+          <tr>
+            <td>Move Speed</td>
+            <td class="substats-value">0%</td>
+          </tr>
+          <tr>
+            <td>Sp Regen</td>
+            <td class="substats-value">0</td>
+          </tr> 
+    </table></td></tr>
+  </table>
+
+</div>
+
+</body>
+</html>

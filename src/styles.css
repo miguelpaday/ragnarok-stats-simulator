@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+.main-container{
+    width: 400px;
+    background-color:  #f5f6fa !important;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    padding: 1%;
+    padding-top: 50px;
+    border-radius: 5%; 
+    box-shadow: 0px 0px 20px 10px rgba(63,151,233,0.08  ) inset;
+}
+
+.substats-value{
+    color: rgb(63,151,233);
+    text-align: right;
+}
+
+.sub {
+    left: 30%;
+    height: 600px;
+    
+}
+
+.stat-container{
+    padding: 1%;
+    margin-top: 40px;
+}
+
+.stat{
+    width: 75px !important;
+    height: 30px !important;
+    display: inline !important;
+    background-color: #dfe4ea !important;
+    border-radius: 0px 30px 30px 0px !important;
+
+}
+
+.init{
+    width: 20px !important;
+}
+
+.stat-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background: rgb(63,151,233);
+    background: linear-gradient(0deg, rgba(63,151,233,1) 0%, rgba(162,210,255,0.4780287114845938) 100%);
+    border: solid 2px rgba(63,151,233,1);
+    color: white;
+    font-weight: bolder;
+}
+.stat-btn:disabled{
+    border: solid 2px rgba(63,151,233,0.5);
+    background: linear-gradient(0deg, rgba(63,151,233,0.4) 0%, rgba(162,210,255,0.2780287114845938) 100%);
+}
