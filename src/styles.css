@@ -4,11 +4,11 @@
     background-color:  #f5f6fa !important;
     position: absolute;
     top: 15%;
-    left: 10%;
+    left: 120px;
     padding: 1%;
     padding-top: 50px;
     border-radius: 5%; 
-    box-shadow: 0px 0px 20px 10px rgba(63,151,233,0.08  ) inset;
+    box-shadow: 0px 0px 20px 10px rgba(63,151,233,0.08) inset;
 }
 
 .substats-value{
@@ -17,7 +17,7 @@
 }
 
 .sub {
-    left: 30%;
+    left: 550px;
     height: 600px;
     
 }
@@ -53,4 +53,8 @@
 .stat-btn:disabled{
     border: solid 2px rgba(63,151,233,0.5);
     background: linear-gradient(0deg, rgba(63,151,233,0.4) 0%, rgba(162,210,255,0.2780287114845938) 100%);
+}
+
+body{
+    background-color: #ced4da;
 }
