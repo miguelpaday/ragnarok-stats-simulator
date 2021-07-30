@@ -6,7 +6,6 @@
     top: 15%;
     left: 120px;
     padding: 1%;
-    padding-top: 50px;
     border-radius: 5%; 
     box-shadow: 0px 0px 20px 10px rgba(63,151,233,0.08) inset;
 }
@@ -24,7 +23,6 @@
 
 .stat-container{
     padding: 1%;
-    margin-top: 40px;
 }
 
 .stat{
@@ -40,6 +38,32 @@
     width: 20px !important;
 }
 
+.profile-picture-border {
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(0deg, rgba(63,151,233,1) 0%, rgba(162,210,255,0.4780287114845938) 100%);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    
+}
+
+.profile-picture-content {
+    width: 65px;
+    height: 65px;
+    background: #f5f6fa;
+    border-radius: 8px;
+}
+
+.base-stat-container {
+    border-radius: 30px;
+    height: 43px;
+    width: 230px;
+}
+
+.stat-blue-arrow {
+}
+
 .stat-btn{
     width: 30px;
     height: 30px;
@@ -50,11 +74,21 @@
     color: white;
     font-weight: bolder;
 }
+
 .stat-btn:disabled{
     border: solid 2px rgba(63,151,233,0.5);
     background: linear-gradient(0deg, rgba(63,151,233,0.4) 0%, rgba(162,210,255,0.2780287114845938) 100%);
 }
 
+.stat-btn:active{
+    background: linear-gradient(180deg, rgba(63,151,233,0.6) 0%, rgba(162,210,255,0.4780287114845938) 100%) !important;
+    border: solid 2px rgba(63,151,233,0.5);
+}
+
+.stat-btn:hover {
+    background: linear-gradient(0deg, rgba(63,151,233,0.7) 0%, rgba(162,210,255,0.4780287114845938) 100%);
+}
+
 body{
-    background-color: #ced4da;
+    background-color: #dee2ff;
 }

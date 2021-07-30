@@ -1,4 +1,5 @@
 export interface Stats {
     statName: string;
-    statValue: number;  
+    statValue: number;
+    raiseCost: number;  
 }

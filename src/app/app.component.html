@@ -6,42 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
 </head>
 <body>
 
 
 <div class="main-container">
-
-  <div style="display: block; padding: 0px !important;">
-    <canvas baseChart width="9" height="7"
-      [datasets]="radarChartData"
-      [options]="radarChartOptions"
-      [labels]="radarChartLabels"
-      [chartType]="radarChartType" 
-      [legend]="false"
-      [colors]="radarChartColor">
-    </canvas>
+  <div class="container">
+    <div class="row">
+      <div class="col-3" style="padding-left: 0px;">
+        <div class="profile-picture-border" >
+          <img class="profile-picture-content" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScWx0s1H7spVq4hnxCNNYNDZ2Y_L9LqLhmLlEWsq5YUhFhYTLV0tKablCRbkni9i0afy4&usqp=CAU"  width="65" height="65" style="object-fit: cover;">
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="row">
+            <table>
+              <tr>
+                <td width="90"><label for="level" style="float: left; margin-right: 10px;">Base Level</label></td>
+                <td><input id="baseLevel" type="number" placeholder="0" value="0" min="0" max="199" (change)="confirmLevel()" class="form-control" style="width: 70px; border-radius: 10px;"></td>
+              </tr>
+              <tr>
+                <td><label for="level" style="float: left; margin-right: 10px;">Job Level</label></td>
+                <td><input type="number" value="0" placeholder="0" value="0" min="0" max="199" class="form-control" style="width: 70px; border-radius: 10px;"></td>
+              </tr>
+            </table>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="stat-container">
+    
+  <div class="stat-container" >
     <form>
       <div class="mb-3" *ngFor="let stat of stats">
         <table class="stat-table">
           <tr>
-            <td style="width: 40px;"> 
+            <td style="width: 40px;" valign="bottom"> 
               <label for="{{stat.statName | lowercase}}" class="form-label">{{stat.statName}}</label>
             </td>
-            <td>
-              <input type="text" [disabled]="true" value="{{stat.statValue}}" style="text-align: center; width: 150px; background-color: white; border-radius: 30px 0px 0px 30px;">
-              <input type="text" class="form-control stat" id="{{stat.statName | lowercase}}"> 
+            <td width="">
+              <div class="form-control base-stat-container">
+                <table style="width: 100%; background-color: transparent;">
+                  <tr>
+                    <td valign="top" align="left" width="80" style="padding-left: 10px;">0</td>
+                    <td valign="top" align="left" id="toBeAddedStat" width="120">+ {{stat.statValue}}</td>
+                    <td valign="top" align="left" width="70"><i class="fa fa-caret-right fa-lg" aria-hidden="true" style="height: 30px; color: rgb(63,151,233); line-height: 1;"></i></td>
+                    <td valign="top" align="center">{{stat.raiseCost}}</td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+            <td align="right" width="95">
+              
+              
               &nbsp;&nbsp;<button [disabled]="isStatZero(stat.statName)" type="button" class="stat-btn" (click)="reduceStat(stat.statName)">-</button>&nbsp;&nbsp;
-              <button class="stat-btn" type="button" href="#" (click)="addStat(stat.statName)">+</button>
+              <button class="stat-btn" type="button" href="#" (mousedown)="addStat(stat.statName)">+</button>
             </td>
           </tr>
         </table>
       </div>
       <table style="width: 100%;">
         <tr>
-          <td ><span style="font-size: 16px;">Attr Points: </span> </td>
+          <td ><span style="font-size: 16px;">Attr Points: {{attrbPoints}}</span> </td>
           <td align="right">
             <button type="button" class="stat-btn" style="border-radius: 10px; width: 100px; height: 40px;">Reset</button>
             <button type="button" class="stat-btn" style="margin-left: 10px; border-radius: 10px; width: 100px; height: 40px;">Apply</button>
@@ -53,7 +79,19 @@
   </div>
 </div>
 
-<div class="main-container sub">
+<div class="main-container sub" style="padding-top: 10px;">
+  
+  <div style="display: block; padding: 0px !important; margin: 30px;">
+    <canvas baseChart width="9" height="7"
+      [datasets]="radarChartData"
+      [options]="radarChartOptions"
+      [labels]="radarChartLabels"
+      [chartType]="radarChartType" 
+      [legend]="false"
+      [colors]="radarChartColor">
+    </canvas>
+  </div>
+
   <table cellspacing="20" style="width: 100%; font-size: 20px;">
     <tr><td><table style="width: 100%; margin-right: 20px;">
           <tr>
@@ -118,6 +156,8 @@
           </tr> 
     </table></td></tr>
   </table>
+
+  
 
 </div>
 

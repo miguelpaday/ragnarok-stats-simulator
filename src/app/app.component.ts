@@ -13,6 +13,8 @@ export class AppComponent {
   title = 'ragnarok-stats-sim';
   public stats: Stats[] = [];
   public statNames: string[] = ["Str", "Agi", "Vit", "Int", "Dex", "Luk"];
+  public attrbPoints: number = 0;
+  public prevLevel: number = 0;
 
   public radarChartOptions: RadialChartOptions = {
     responsive: true,
@@ -71,7 +73,8 @@ export class AppComponent {
     this.stats = this.statNames.map(stat => {
       let temp: Stats = {
       statName: stat,
-      statValue: 0
+      statValue: 0,
+      raiseCost: 2
     }
     return temp
     });
@@ -85,36 +88,69 @@ export class AppComponent {
       return stat.statName === statName;
    })
 
-    if(this.stats[findStat].statValue === 0){
+    if(this.stats[findStat].statValue === 0)
       return true;
-    }else{
       return false;
-    }
+    
   }
 
   public addStat(statName: string){
+    
    let statsIndex: number = this.stats.findIndex((stat) => { 
       return stat.statName === statName;
    })
+   if(this.attrbPoints >= this.stats[statsIndex].raiseCost){
    this.stats[statsIndex].statValue++;
+   this.attrbPoints-= this.stats[statsIndex].raiseCost
+   this.stats[statsIndex].raiseCost = this.computeCost(statsIndex)
    this.updateChart();
+    }
+  }
+
+  public computeCost(statsIndex: number): number{
+    let statVal = this.stats[statsIndex].statValue
+      if(statVal > 0 && statVal < 100){
+        return Math.floor((statVal-1)/10)+2
+      }else if(statVal > 0 && statVal <= 130){
+        return (4*Math.floor((statVal-100)/5))+16
+      }
+    return 2
   }
 
   public reduceStat(statName: string){
     let statsIndex: number = this.stats.findIndex((stat) => { 
        return stat.statName === statName;
     })
-    this.stats[statsIndex].statValue--;
+    this.stats[statsIndex].statValue--
+    this.stats[statsIndex].raiseCost = this.computeCost(statsIndex)
+    this.attrbPoints+= this.stats[statsIndex].raiseCost
     this.updateChart();
    }
 
   public updateChart(){
     let newChartData: number[] = [];
     this.stats.map(stats => {
-      newChartData.push(stats.statValue);
+      newChartData.push(stats.statValue)
     })
 
-    this.radarChartData = [{ data: newChartData }];
+    this.radarChartData = [{ data: newChartData }]
+  }
+
+  public confirmLevel(): void{
+    const inputLevel: number = Number((<HTMLInputElement>document.getElementById('baseLevel')).value)
+
+    this.attrbPoints = 0
+      for(let lvl = 1; lvl <= inputLevel; lvl++){
+        if ( lvl < 100 ) { 
+          this.attrbPoints += Math.floor(lvl / 5) + 3
+        }else if ( lvl < 151 ) {
+          this.attrbPoints += Math.floor(lvl / 10) + 13
+        }else if ( lvl < 176 ) {
+          this.attrbPoints += Math.floor((lvl - 150)/7) + 28
+        }
+      }
+      
+    this.prevLevel = inputLevel
   }
 
   public getStats(): void {
