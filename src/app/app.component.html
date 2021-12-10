@@ -35,13 +35,13 @@
       </div>
     </div>
   </div>
-    
+
   <div class="stat-container" >
     <form>
       <div class="mb-3" *ngFor="let stat of stats">
         <table class="stat-table">
           <tr>
-            <td style="width: 40px;" valign="bottom"> 
+            <td style="width: 40px;" valign="bottom">
               <label for="{{stat.statName | lowercase}}" class="form-label">{{stat.statName}}</label>
             </td>
             <td width="">
@@ -57,8 +57,8 @@
               </div>
             </td>
             <td align="right" width="95">
-              
-              
+
+
               &nbsp;&nbsp;<button [disabled]="isStatZero(stat.statName)" type="button" class="stat-btn" (click)="reduceStat(stat.statName)">-</button>&nbsp;&nbsp;
               <button class="stat-btn" type="button" href="#" (mousedown)="addStat(stat.statName)">+</button>
             </td>
@@ -74,19 +74,19 @@
           </td>
         </tr>
       </table>
-      
+
     </form>
   </div>
 </div>
 
 <div class="main-container sub" style="padding-top: 10px;">
-  
+
   <div style="display: block; padding: 0px !important; margin: 30px;">
     <canvas baseChart width="9" height="7"
       [datasets]="radarChartData"
       [options]="radarChartOptions"
       [labels]="radarChartLabels"
-      [chartType]="radarChartType" 
+      [chartType]="radarChartType"
       [legend]="false"
       [colors]="radarChartColor">
     </canvas>
@@ -96,31 +96,31 @@
     <tr><td><table style="width: 100%; margin-right: 20px;">
           <tr>
             <td>HP</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_hp}}%</td>
           </tr>
           <tr>
             <td>Atk</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_atk}}</td>
           </tr>
           <tr>
             <td>M.Atk</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_matk}}</td>
           </tr>
           <tr>
             <td>Hit</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_hit}}</td>
           </tr>
           <tr>
             <td>Critical</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_critical}}</td>
           </tr>
           <tr>
             <td>ASPD</td>
-            <td class="substats-value">0%</td>
+            <td class="substats-value">{{stat_ASPD}}%</td>
           </tr>
           <tr>
             <td>HP Regen</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_hpregen}}</td>
           </tr>
         </table>
       </td>
@@ -128,36 +128,36 @@
         <table style="width: 100%;">
           <tr>
             <td>SP</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_sp}}%</td>
           </tr>
           <tr>
             <td>Def</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_def}}</td>
           </tr>
           <tr>
             <td>M.Def</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_mdef}}</td>
           </tr>
           <tr>
             <td>Flee</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_flee}}</td>
           </tr>
           <tr>
             <td>Crit.Res.</td>
-            <td class="substats-value">0</td>
+            <td class="substats-value">{{stat_critres}}</td>
           </tr>
           <tr>
             <td>Move Speed</td>
-            <td class="substats-value">0%</td>
+            <td class="substats-value">{{stat_movespeed}}%</td>
           </tr>
           <tr>
             <td>Sp Regen</td>
-            <td class="substats-value">0</td>
-          </tr> 
+            <td class="substats-value">{{stat_spregen}}</td>
+          </tr>
     </table></td></tr>
   </table>
 
-  
+
 
 </div>
 
